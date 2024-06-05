@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,5 +13,7 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::resource('pegawais', PegawaiController::class);
 
 require __DIR__.'/auth.php';
