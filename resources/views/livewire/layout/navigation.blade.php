@@ -34,7 +34,7 @@ new class extends Component
                 </div>
                 @if(auth()->user()->role === 'admin')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('dashboard')" wire:navigate>
+                        <x-nav-link :href="route('pegawais.index')" :active="request()->routeIs('pegawais.index')" wire:navigate>
                             {{ __('Input Pegawai') }}
                         </x-nav-link>
                     </div>
@@ -45,7 +45,7 @@ new class extends Component
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('bobot.index')" :active="request()->routeIs('bobot.index')" wire:navigate>
                         {{ __('Bobot') }}
                     </x-nav-link>
                 </div>

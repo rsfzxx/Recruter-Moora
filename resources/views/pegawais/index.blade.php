@@ -33,7 +33,7 @@
                             </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative;">
-                                    <table class="table table-dark mb-0">
+                                    <table class="table table-bordered table-hover table-dark mb-0">
                                         <thead>
                                             <tr class="text-uppercase text-center">
                                                 <th scope="col">No</th>
