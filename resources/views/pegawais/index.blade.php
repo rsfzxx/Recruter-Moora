@@ -60,10 +60,10 @@
                                                 <td>{{ $pegawai->nilai_tes_tertulis }}</td>
                                                 <td>
                                                     <form action="{{ route('pegawais.destroy',$pegawai->id) }}" method="POST">
-                                                        <a class="btn btn-info text-light" href="{{ route('pegawais.show',$pegawai->id) }}">Detail</a>
+                                                        <a class="btn btn-warning text-light" href="{{ route('pegawais.show',$pegawai->id) }}">Detail</a>
                                                         <a class="btn btn-primary" href="{{ route('pegawais.edit',$pegawai->id) }}">Edit</a>
                                                         @csrf
-                                                        @method('DELETE')                                            
+                                                        @method('DELETE')
                                                         <button type="button" class="btn btn-danger" onclick="handleDelete(this.form)">Delete</button>
                                                     </form>
                                                 </td>
@@ -79,6 +79,9 @@
                 </div>
             </div>
         </section>  
+    </div>
+    <div class="col-md-12 text-center">
+        <a class="btn btn-lg btn-info text-light my-5" href="{{ route('moora.index') }}">Hitung - Moora</a>
     </div>
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">

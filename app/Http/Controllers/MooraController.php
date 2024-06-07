@@ -26,8 +26,13 @@ class MooraController extends Controller
         $nilaiTerendahUsia = min($usiaValues);
 
         $pengalamanValues = $pegawais->pluck('pengalaman_kerja')->map(function($value) {
-            return $value === '5+' ? 6 : (int)$value; 
-        })->toArray();
+            if ($value === '5+') {
+                return 6;
+            } elseif ($value === '-1') {
+                return 0.5;
+            } else {
+                return (int)$value;
+            }})->toArray();
         $rataRataPengalaman = array_sum($pengalamanValues) / count($pengalamanValues);
         $nilaiTertinggiPengalaman = max($pengalamanValues);
         $nilaiTerendahPengalaman = min($pengalamanValues);
@@ -111,7 +116,7 @@ class MooraController extends Controller
             ];
         }
 
-        $top3 = collect($hasilNormalisasi)->sortByDesc('hasil_akhir')->take(3)->values()->all();
+        $top3 = collect($hasilNormalisasi)->sortByDesc('hasil_akhir')->values()->all();
 
         return view('livewire.pages.moora.index', [
             'hasilNormalisasi' => $hasilNormalisasi,

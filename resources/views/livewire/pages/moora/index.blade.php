@@ -14,17 +14,25 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="text text-center">Hasil Akhir Perhitungan Moora</h1>
+        <h1 class="text text-center mb-5">Hasil Akhir - Perhitungan Moora</h1>
+        <div class="d-flex justify-content-center align-items-center mb-5">
+            <div class="card text-dark bg-info mb-3 text-center" style="max-width: 18rem;">
+                <div class="card-header">TOTAL KANDIDAT</div>
+                <div class="card-body">
+                    <h1 class="card-title">"{{ $totalPegawai }}"</h1>
+                    <p class="card-text">Orang</p>
+                </div>
+            </div>
+        </div>
         <section class="intro">
             <div class="mask d-flex align-items-center h-100">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <h3>Total Pegawai: {{ $totalPegawai }}</h3>
                             <div class="card-body p-0">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h2 class="text-center"> Tabel Data Alternatif </h2>
+                                        <h2 class="text-center mb-4"> Tabel Data Alternatif </h2>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative;">
                                             <table class="table table-bordered table-hover table-success mb-0">
                                                 <thead>
@@ -53,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <h2 class="text-center"> Tabel Data Kriteria </h2>
+                                        <h2 class="text-center mb-4"> Tabel Data Kriteria </h2>
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative;">
                                             <table class="table table-bordered table-hover table-success mb-0">
                                                 <thead>
@@ -79,67 +87,125 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <h2 class="text-center">Grafik Rentang Nilai IPK</h2>
-                                <p>Rata-rata: {{ number_format($rataRataIpk, 2) }}</p>
-                                <p>Nilai Tertinggi: {{ $nilaiTertinggiIpk }}</p>
-                                <p>Nilai Terendah: {{ $nilaiTerendahIpk }}</p>
-                                <canvas id="ipkChart"></canvas>
+
+                            <h1 class="text text-center my-5">Rentang Data - Perhitungan Moora</h1>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2 class="text-center mt-3">Total Data - IPK</h2>
+                                    <canvas id="ipkChart"></canvas>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-md-4">
+                                            <b><p>Rata-rata : {{ number_format($rataRataIpk, 2) }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>IPK Tertinggi : {{ $nilaiTertinggiIpk }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>IPK Terendah : {{ $nilaiTerendahIpk }}</p></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h2 class="text-center mt-3">Total Data - Usia</h2>
+                                    <canvas id="usiaChart"></canvas>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-md-4">
+                                            <b><p>Rata-rata : {{ number_format($rataRataUsia, 1) }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Usia Tertua : {{ $nilaiTertinggiUsia }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Usia Termuda : {{ $nilaiTerendahUsia }}</p></b>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h2 class="text-center">Grafik Rentang Nilai Usia</h2>
-                                <p>Rata-rata: {{ number_format($rataRataUsia, 1) }}</p>
-                                <p>Nilai Tertinggi: {{ $nilaiTertinggiUsia }}</p>
-                                <p>Nilai Terendah: {{ $nilaiTerendahUsia }}</p>
-                                <canvas id="usiaChart"></canvas>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2 class="text-center mt-5">Total Data - Pengalaman Kerja</h2>
+                                    <canvas id="pengalamanChart"></canvas>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-md-4">
+                                            <b><p>Rata-rata: {{ number_format($rataRataPengalaman, 2) }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Pengalaman Tertinggi: {{ $nilaiTertinggiPengalaman }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Pengalaman Terendah: {{ $nilaiTerendahPengalaman }}</p></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h2 class="text-center mt-5">Total Data - Wawancara</h2>
+                                    <canvas id="wawancaraChart"></canvas>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-md-4">
+                                            <b><p>Rata-rata: {{ number_format($rataRataWawancara, 2) }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Nilai Tertinggi: {{ $nilaiTertinggiWawancara }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Nilai Terendah: {{ $nilaiTerendahWawancara }}</p></b>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h2 class="text-center">Grafik Rentang Nilai Pengalaman Kerja</h2>
-                                <p>Rata-rata: {{ number_format($rataRataPengalaman, 2) }}</p>
-                                <p>Nilai Tertinggi: {{ $nilaiTertinggiPengalaman }}</p>
-                                <p>Nilai Terendah: {{ $nilaiTerendahPengalaman }}</p>
-                                <canvas id="pengalamanChart"></canvas>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2 class="text-center mt-5">Total Data - Psikotest</h2>
+                                    <canvas id="psikotestChart"></canvas>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-md-4">
+                                            <b><p>Rata-rata: {{ number_format($rataRataPsikotest, 2) }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Nilai Tertinggi: {{ $nilaiTertinggiPsikotest }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Nilai Terendah: {{ $nilaiTerendahPsikotest }}</p></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h2 class="text-center mt-5">Total Data - Tes Tertulis</h2>
+                                    <canvas id="testChart"></canvas>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-md-4">
+                                            <b><p>Rata-rata: {{ number_format($rataRataTest, 2) }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Nilai Tertinggi: {{ $nilaiTertinggiTest }}</p></b>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <b><p>Nilai Terendah: {{ $nilaiTerendahTest }}</p></b>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h2 class="text-center">Grafik Rentang Nilai Wawancara</h2>
-                                <p>Rata-rata: {{ number_format($rataRataWawancara, 2) }}</p>
-                                <p>Nilai Tertinggi: {{ $nilaiTertinggiWawancara }}</p>
-                                <p>Nilai Terendah: {{ $nilaiTerendahWawancara }}</p>
-                                <canvas id="wawancaraChart"></canvas>
-                            </div>
-                            <div class="col-md-6">
-                                <h2 class="text-center">Grafik Rentang Nilai Psikotest</h2>
-                                <p>Rata-rata: {{ number_format($rataRataPsikotest, 2) }}</p>
-                                <p>Nilai Tertinggi: {{ $nilaiTertinggiPsikotest }}</p>
-                                <p>Nilai Terendah: {{ $nilaiTerendahPsikotest }}</p>
-                                <canvas id="psikotestChart"></canvas>
-                            </div>
-                            <div class="col-md-6">
-                                <h2 class="text-center">Grafik Rentang Nilai Tes Tertulis</h2>
-                                <p>Rata-rata: {{ number_format($rataRataTest, 2) }}</p>
-                                <p>Nilai Tertinggi: {{ $nilaiTertinggiTest }}</p>
-                                <p>Nilai Terendah: {{ $nilaiTerendahTest }}</p>
-                                <canvas id="testChart"></canvas>
-                            </div>
-                            <table>
-                                <thead>
+
+                            <h1 class="text text-center my-5">Hasil Data Normalisasi</h1>
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <th>Nama Pegawai</th>
-                                        <th>Pengalaman Kerja (Normalisasi)</th>
-                                        <th>IPK (Normalisasi)</th>
-                                        <th>Usia (Normalisasi)</th>
-                                        <th>Nilai Wawancara (Normalisasi)</th>
-                                        <th>Nilai Psikotest (Normalisasi)</th>
-                                        <th>Nilai Tes Tertulis (Normalisasi)</th>
+                                        <th>Nama</th>
+                                        <th>C1</th>
+                                        <th>C2</th>
+                                        <th>C3</th>
+                                        <th>C4</th>
+                                        <th>C5</th>
+                                        <th>C6</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($hasilNormalisasi as $hasil)
                                         <tr>
                                             <td>{{ $hasil['pegawai']->nama_lengkap }}</td>
-                                            <td>{{ $hasil['pengalaman_kerja_normal'] }}</td>
                                             <td>{{ $hasil['normalisasi_ipk'] }}</td>
                                             <td>{{ $hasil['normalisasi_usia'] }}</td>
+                                            <td>{{ $hasil['pengalaman_kerja_normal'] }}</td>
                                             <td>{{ $hasil['normalisasi_wawancara'] }}</td>
                                             <td>{{ $hasil['normalisasi_psikotest'] }}</td>
                                             <td>{{ $hasil['normalisasi_test_tertulis'] }}</td>
@@ -147,17 +213,18 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <table>
-                                <h2> Hasil Data Pembobotan </h2>
-                                <thead>
+
+                            <h1 class="text text-center my-5">Data Akhir Penilaian</h1>
+                            <table class="table table-dark table-striped-columns">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>Nama</th>
-                                        <th>Pengalaman Kerja</th>
-                                        <th>IPK </th>
-                                        <th>Usia </th>
-                                        <th>Nilai Wawancara </th>
-                                        <th>Nilai Psikotest </th>
-                                        <th>Nilai Tes Tertulis </th>
+                                        <th>IPK (C1)</th>
+                                        <th>Usia (C2)</th>
+                                        <th>Pengalaman (C3)</th>
+                                        <th>Wawancara (C4)</th>
+                                        <th>Psikotest (C5)</th>
+                                        <th>Test Tertulis (C6)</th>
                                         <th>Hasil Akhir</th>
                                     </tr>
                                 </thead>
@@ -165,9 +232,9 @@
                                     @foreach($hasilNormalisasi as $hasil)
                                         <tr>
                                             <td>{{ $hasil['pegawai']->nama_lengkap }}</td>
-                                            <td>{{ $hasil['hasil_pengalaman'] }}</td>
                                             <td>{{ $hasil['hasil_ipk'] }}</td>
                                             <td>{{ $hasil['hasil_usia'] }}</td>
+                                            <td>{{ $hasil['hasil_pengalaman'] }}</td>
                                             <td>{{ $hasil['hasil_wawancara'] }}</td>
                                             <td>{{ $hasil['hasil_psikotest'] }}</td>
                                             <td>{{ $hasil['hasil_test'] }}</td>
@@ -176,8 +243,8 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="col-md-6">
-                                <h2 class="text-center">Top 3 Hasil Akhir</h2>
+                            <h1 class="text text-center my-5">Kandidat Terbaik</h1>
+                            <div class="col-md-12">
                                 <canvas id="top3Chart"></canvas>
                             </div>
                         </div>
@@ -186,6 +253,13 @@
             </div>
         </section>  
     </div>
+
+    <div class="container my-5">
+        <div class="col-md-12 text-center">
+            <a class="btn btn-lg btn-success text-light my-5" href="{{ route('moora.index') }}">Simpan</a>
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Grafik IPK
@@ -195,12 +269,12 @@
             new Chart(ipkCtx, {
                 type: 'bar',
                 data: {
-                    labels: ipkValues.map((value, index) => `Pegawai ${index + 1}`),
+                    labels: ipkValues.map((value, index) => `IPK`),
                     datasets: [{
-                        label: 'IPK Pegawai',
+                        label: 'IPK Kandidat',
                         data: ipkValues,
-                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                        borderColor: 'rgba(153, 102, 255, 1)',
+                        backgroundColor: 'rgba(238, 81, 81, 0.2)',
+                        borderColor: 'rgba(238, 81, 81, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -219,9 +293,9 @@
             new Chart(usiaCtx, {
                 type: 'bar',
                 data: {
-                    labels: usiaValues.map((value, index) => `Pegawai ${index + 1}`),
+                    labels: usiaValues.map((value, index) => `Usia`),
                     datasets: [{
-                        label: 'Usia Pegawai',
+                        label: 'Usia Kandidat',
                         data: usiaValues,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
@@ -244,12 +318,12 @@
             new Chart(pengalamanCtx, {
                 type: 'bar',
                 data: {
-                    labels: pengalamanValues.map((value, index) => `Pegawai ${index + 1}`),
+                    labels: pengalamanValues.map((value, index) => `Pengalaman`),
                     datasets: [{
-                        label: 'Pengalaman Pegawai',
+                        label: 'Pengalaman Kandidat',
                         data: pengalamanValues,
-                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                        borderColor: 'rgba(255, 159, 64, 1)',
+                        backgroundColor: 'rgba(238, 223, 81, 0.2)',
+                        borderColor: 'rgba(238, 223, 81, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -269,12 +343,12 @@
             new Chart(wawancaraCtx, {
                 type: 'bar',
                 data: {
-                    labels: wawancaraValues.map((value, index) => `Pegawai ${index + 1}`),
+                    labels: wawancaraValues.map((value, index) => `Wawancara`),
                     datasets: [{
-                        label: 'wawancara Pegawai',
+                        label: 'Wawancara Kandidat',
                         data: wawancaraValues,
-                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                        borderColor: 'rgba(255, 159, 64, 1)',
+                        backgroundColor: 'rgba(58, 247, 55, 0.2)',
+                        borderColor: 'rgba(58, 247, 55, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -294,12 +368,12 @@
             new Chart(psikotestCtx, {
                 type: 'bar',
                 data: {
-                    labels: psikotestValues.map((value, index) => `Pegawai ${index + 1}`),
+                    labels: psikotestValues.map((value, index) => `Psikotest`),
                     datasets: [{
-                        label: 'psikotest Pegawai',
+                        label: 'Psikotest Kandidat',
                         data: psikotestValues,
-                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                        borderColor: 'rgba(255, 159, 64, 1)',
+                        backgroundColor: 'rgba(179, 45, 201, 0.2)',
+                        borderColor: 'rgba(179, 45, 201, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -319,12 +393,12 @@
             new Chart(testCtx, {
                 type: 'bar',
                 data: {
-                    labels: testValues.map((value, index) => `Pegawai ${index + 1}`),
+                    labels: testValues.map((value, index) => `Tes Tertulis`),
                     datasets: [{
-                        label: 'test Pegawai',
+                        label: 'Tes Tertulis Kandidat',
                         data: testValues,
-                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                        borderColor: 'rgba(255, 159, 64, 1)',
+                        backgroundColor: 'rgba(26, 248, 232, 0.2)',
+                        borderColor: 'rgba(26, 248, 232, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -346,10 +420,10 @@
                 data: {
                     labels: top3.map((result, index) => result.pegawai.nama_lengkap),
                     datasets: [{
-                        label: 'Hasil Akhir',
+                        label: 'Kandidat Terbaik',
                         data: top3.map(result => result.hasil_akhir),
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(15, 17, 15, 0.2)',
+                        borderColor: 'rgba(15, 17, 15, 1)',
                         borderWidth: 1
                     }]
                 },
