@@ -31,7 +31,8 @@
                     </h4>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a class="btn btn-lg btn-primary my-5" href="{{ route('pegawais.index') }}">Input Pegawai</a>
+                    <a class="btn btn-lg btn-primary my-5 mx-2 rounded-pill" href="{{ route('pegawais.index') }}">Input Pegawai</a>
+                    <a class="btn btn-lg btn-success my-5 mx-2 rounded-pill" href="{{ route('pegawais.index') }}">Rekomendasi</a>
                 </div>
             </div>
             <div class="col-md-6">
