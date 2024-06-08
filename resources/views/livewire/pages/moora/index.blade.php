@@ -255,8 +255,17 @@
     </div>
 
     <div class="container my-5">
-        <div class="col-md-12 text-center">
-            <a class="btn btn-lg btn-success text-light my-5" href="{{ route('moora.index') }}">Simpan</a>
+        <div class="row justify-content-center">
+            <div class="col-md-6 my-5">
+                <form action="{{ route('moora.save') }}" method="POST" class="d-flex align-items-end">
+                    @csrf
+                    <div class="mb-3 me-3 flex-grow-1">
+                        <label for="judul" class="form-label">Judul</label>
+                        <input type="text" class="form-control" id="judul" name="judul" required>
+                    </div>
+                    <button type="submit" class="btn btn-success text-light mb-3">Simpan</button>
+                </form>
+            </div>
         </div>
     </div>
 

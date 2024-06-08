@@ -40,7 +40,7 @@ new class extends Component
                     </div>
                 @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('history.index')" wire:navigate>
                         {{ __('Rekomendasi') }}
                     </x-nav-link>
                 </div>
